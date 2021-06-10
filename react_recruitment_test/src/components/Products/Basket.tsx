@@ -25,11 +25,6 @@ const Basket: React.FC = () => {
         </span>
         zł
       </p>
-
-      <h3>Podsumowanie</h3>
-      {basket.map((item: BasketItem) => (
-        <p>{item.quantity} {item.price}</p>
-      ))}
     </div>
   );
 };

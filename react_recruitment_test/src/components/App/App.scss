@@ -3,6 +3,11 @@
 .app {
   font-family: "Roboto Mono";
   font-size: 14px;
+
+  h3{
+    text-align: center;
+    margin-top: 30px;
+  }
 }
 
 .loader {
@@ -11,21 +16,22 @@
   @include centralize;
 }
 
-.productsList {
-  padding: 0;
+.productCard {
+  border-radius: 0;
 }
 
 .productElement {
   padding: 15px;
-  border-bottom: 1px solid $gray;
   list-style: none;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .productInformation {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding: 20px;
 
   &:hover {
     opacity: 0.5;
@@ -35,5 +41,20 @@
 .productPrice {
   font-weight: 500;
   color: $primary;
-  margin-left: 40px;
+  margin-top: 10px;
+}
+
+$imageHeight: 250px;
+
+.productImage {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: $imageHeight;
+}
+
+.productNoPhoto {
+  @include centralize;
+  width: 100%;
+  height: $imageHeight;
 }

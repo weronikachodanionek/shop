@@ -3,7 +3,7 @@ import React from "react";
 import useProductQuantity from "../../hooks/useProductQuantity";
 
 import "./Product.scss";
-import StyledButton from "../common/ProductButton";
+import StyledButton from "../Buttons/ProductButton";
 
 interface QuantityProps {
   pid: string;

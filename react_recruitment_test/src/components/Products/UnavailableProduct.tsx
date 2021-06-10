@@ -1,6 +1,6 @@
 import React from "react";
 
-import { UnavailableProductButton } from "../common";
+import { UnavailableProductButton } from "../Buttons";
 
 import "./Product.scss";
 

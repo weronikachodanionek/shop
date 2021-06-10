@@ -1,12 +1,12 @@
 @import "../../assets/styles/sass-recources.scss";
 
 .productQuantity {
-  display: flex;
+  @include centralize;
+  margin: 20px 0;
 }
 
 .quantityMessage {
   font-size: 12px;
-
   span {
     margin: 0 5px;
   }

@@ -7,7 +7,8 @@
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "@types/**/*.d.ts"],
   "exclude": ["node_modules", "*/.spec.ts"]

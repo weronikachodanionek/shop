@@ -12,8 +12,8 @@ const ProductButton = withStyles({
     boxShadow: "0px 0px 40px -5px rgba(0,0,0,0.23);",
     marginRight: "20px",
     "&:hover": {
-      backgroundColor: "rgb(224, 200, 190)",
-      color: "rgb(19, 18, 18)",
+      backgroundColor: "rgba(255, 175, 138, 0.961)",
+      color: "rgb(20, 20, 20)",
     },
   },
 })(Button);

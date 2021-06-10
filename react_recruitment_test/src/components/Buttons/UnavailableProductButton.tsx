@@ -2,10 +2,10 @@ import { Button, withStyles } from "@material-ui/core";
 
 const UnavailableProductButton = withStyles({
   root: {
-    background: "#c0c0c0",
+    background: "rgb(192, 192, 192)",
     borderRadius: 50,
     border: 0,
-    color: "white",
+    color: "rgb(20, 20, 20)",
     height: 28,
     width: 28,
     minWidth: 28,
