@@ -1,23 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
+
 import useProductsData from "../../dataHooks/useProducts";
-import { apiService } from "../../services/api.service";
-import { Product } from "../../types/productType";
+
 import "./App.scss";
+import "../../assets/styles/index.scss";
+import { ProductQuantity } from "../Products/ProductQuantity";
+import { Product } from "../../types/productType";
+import { Container } from "@material-ui/core";
+import { BasketContextProvider, useBasketContext } from "../../context/basketContext";
+import { Basket } from "../Products/Basket";
+import useProductQuantity from "../../dataHooks/useProductQuantity";
 
 const App = () => {
   const { products } = useProductsData();
 
+  const { basket } = useBasketContext();
+  
+  console.log("bbb a", basket)
+
   return (
-    <div className="container">
-      <h3>Lista produktów</h3>
-      <ul>
-        {products?.map((product: Product) => (
-          <li key={product.pid} className="row">
-            {product.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <BasketContextProvider>
+      <Container className="app">
+        <h3>Lista produktów</h3>
+        <ul className="productsList">
+          {products?.map((product: Product) => (
+            <li key={product.pid} className="productElement">
+              <div className="productInformation">
+                {product.name}
+                <div className="productPrice">{product.price} zł</div>
+              </div>
+              <ProductQuantity pid={product.pid} />
+            </li>
+          ))}
+        </ul>
+
+      </Container>
+    </BasketContextProvider>
   );
 };
 

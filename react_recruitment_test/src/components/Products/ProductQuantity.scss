@@ -1,0 +1,17 @@
+@import "../../assets/styles/sass-recources.scss";
+
+.productQuantity {
+  display: flex;
+}
+
+.quantityMessage {
+  font-size: 12px;
+
+  span{
+    margin: 0 5px;
+  }
+}
+
+.quantityNumber {
+  color: $secondary;
+}

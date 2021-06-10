@@ -1,10 +1,33 @@
-.container{
-    width: 1000px;
-    margin: 100px auto 0 auto;
+@import "../../assets/styles/sass-recources.scss";
+
+.app {
+  font-family: "Roboto Mono";
+  font-size: 14px;
 }
 
-.row {
-    padding: 10px;
-    border-bottom: 1px solid silver;
-    list-style: none;
+.productsList {
+  padding: 0;
+}
+
+.productElement {
+  padding: 15px;
+  border-bottom: 1px solid $gray;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productInformation {
+  display: flex;
+  align-items: center;
+
+  &:hover{
+    opacity: 0.5;
+  }
+}
+
+.productPrice {
+  font-weight: 500;
+  color: $primary;
+  margin-left: 40px;
 }

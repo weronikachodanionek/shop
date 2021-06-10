@@ -29,12 +29,12 @@ module.exports = {
         },
       },
       {
+        use: "file-loader",
+        test: /\.(ttf)$/,
+      },
+      {
         test: /\.s[ac]ss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.css$/,
@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: /\.module\.scss$/,
+        exclude: /\.scss$/,
       },
     ],
   },
