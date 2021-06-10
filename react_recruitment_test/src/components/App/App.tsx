@@ -1,41 +1,56 @@
 import React from "react";
 
-import useProductsData from "../../dataHooks/useProducts";
+import { CircularProgress, Container } from "@material-ui/core";
+import { Basket, ProductQuantity, UnavailableProduct } from "../Products";
+
+import useProductsData from "../../hooks/useProducts";
+import { BasketContextProvider } from "../../context/basketContext";
 
 import "./App.scss";
 import "../../assets/styles/index.scss";
-import { ProductQuantity } from "../Products/ProductQuantity";
 import { Product } from "../../types/productType";
-import { Container } from "@material-ui/core";
-import { BasketContextProvider, useBasketContext } from "../../context/basketContext";
-import { Basket } from "../Products/Basket";
-import useProductQuantity from "../../dataHooks/useProductQuantity";
+import { formatPrice } from "../../helpers/formatPrice";
 
 const App = () => {
   const { products } = useProductsData();
 
-  const { basket } = useBasketContext();
-  
-  console.log("bbb a", basket)
-
   return (
-    <BasketContextProvider>
-      <Container className="app">
-        <h3>Lista produktów</h3>
-        <ul className="productsList">
-          {products?.map((product: Product) => (
-            <li key={product.pid} className="productElement">
-              <div className="productInformation">
-                {product.name}
-                <div className="productPrice">{product.price} zł</div>
-              </div>
-              <ProductQuantity pid={product.pid} />
-            </li>
-          ))}
-        </ul>
+    <>
+      {products ? (
+        <BasketContextProvider>
+          <Container className="app">
+            <h3>Lista produktów</h3>
+            <ul className="productsList">
+              {products?.map((product: Product) => (
+                <li key={product.pid} className="productElement">
+                  <div className="productInformation">
+                    {product.name}
+                    <div className="productPrice">
+                      {formatPrice(product.price)} zł
+                    </div>
+                  </div>
 
-      </Container>
-    </BasketContextProvider>
+                  {product.isBlocked ? (
+                    <UnavailableProduct />
+                  ) : (
+                    <ProductQuantity
+                      pid={product.pid}
+                      price={formatPrice(product.price)}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <Basket />
+          </Container>
+        </BasketContextProvider>
+      ) : (
+        <div className="loader">
+          <CircularProgress />
+        </div>
+      )}
+    </>
   );
 };
 

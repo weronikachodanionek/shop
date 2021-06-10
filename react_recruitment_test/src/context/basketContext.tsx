@@ -6,18 +6,14 @@ import React, {
   Dispatch,
   SetStateAction,
 } from "react";
-
-interface BasketObject {
-  id: string;
-  quantity: number | null;
-}
+import { BasketItem } from "../types/basketType";
 
 interface BasketContextProps {
-  basket: BasketObject[];
+  basket: BasketItem[];
 }
 
 interface BasketActionsContextProps {
-  setBasket: Dispatch<SetStateAction<BasketObject[]>>;
+  setBasket: Dispatch<SetStateAction<BasketItem[]>>;
 }
 
 const BasketContext = createContext<BasketContextProps>(
@@ -34,7 +30,7 @@ export const useBasketActionsContext = () =>
   useContext(BasketActionsContext);
 
 export const BasketContextProvider: FC = ({ children }) => {
-  const [basket, setBasket] = useState<BasketObject[]>([]);
+  const [basket, setBasket] = useState<BasketItem[]>([]);
 
   return (
     <BasketContext.Provider value={{ basket }}>
