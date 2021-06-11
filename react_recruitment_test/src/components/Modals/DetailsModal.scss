@@ -32,6 +32,8 @@
 }
 
 .details {
+  margin-bottom: 40px; 
+  
   h3 {
     font-size: 18px;
   }
@@ -53,6 +55,10 @@
   @include backgroundImage;
   height: 300px;
   margin-top: 20px;
+}
+
+.unavailableCommunicat{
+  margin-bottom: 40px;
 }
 
 //React-Modal styles

@@ -39,7 +39,7 @@ const DetailsModal: React.FC<DetailModalsProps> = ({
             <h3>Nazywa produktu: {productDetails.name}</h3>
             <span>Cena produktu: {productDetails.price} zł</span>
             {productDetails.isBlocked ? (
-              <p>
+              <p className="unavailableCommunicat">
                 Przepraszamy, produkt chwilowo niedostępny. Przepraszamy za
                 utrudnienia i zapraszamy ponownie w przyszłości
               </p>
@@ -54,7 +54,11 @@ const DetailsModal: React.FC<DetailModalsProps> = ({
             )}
           </div>
 
-          <DetailsButton>Dodaj 1 sztukę do koszyka</DetailsButton>
+          {productDetails.isBlocked ? (
+            <></>
+          ) : (
+            <DetailsButton>Dodaj 1 sztukę do koszyka</DetailsButton>
+          )}
         </div>
       </ReactModal>
     );
