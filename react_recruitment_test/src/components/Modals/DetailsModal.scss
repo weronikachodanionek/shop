@@ -1,0 +1,88 @@
+@import "../../assets/styles/sass-recources.scss";
+
+.detailsCommunicat {
+  @include centralize;
+  color: $darkgray;
+  font-size: 13px;
+  font-family: "Noto Sans";
+  text-align: center;
+  margin: 10px 0;
+  cursor: pointer;
+
+  p {
+    margin-right: 15px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.detailsModal {
+  @include centralize;
+  flex-direction: column;
+  font-family: "Roboto Mono";
+  color: $dark;
+  padding-bottom: 20px;
+}
+
+.detailsClose {
+  width: 100%;
+  text-align: end;
+}
+
+.details {
+  h3 {
+    font-size: 18px;
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 14px;
+    margin-top: 50px;
+    font-family: "Noto Sans";
+    color: $darkgray;
+  }
+}
+
+.detailsImage {
+  @include backgroundImage;
+  height: 300px;
+  margin-top: 20px;
+}
+
+//React-Modal styles
+
+.ReactModal__Overlay {
+  @include centralize;
+  z-index: 5;
+}
+
+.ReactModal__Content {
+  width: 40%;
+  border-radius: 0;
+  inset-block: auto !important;
+  inset-inline: auto !important;
+}
+
+@media (max-width: 1375px) {
+  .ReactModal__Content {
+    width: 60%;
+  }
+}
+
+@media (max-width: 900px) {
+  .ReactModal__Content {
+    width: 75%;
+  }
+}
+
+@media (max-width: 650px) {
+  .ReactModal__Content {
+    width: 80%;
+  }
+}

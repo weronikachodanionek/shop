@@ -16,7 +16,6 @@ function useProductQuantity(
   const [isBlockedAddition, setIsBlockedAddition] = useState<boolean>(false);
   const [isBlockedSubtraction, setIsBlockedSubtraction] =
     useState<boolean>(false);
-  //const [isBlocked, setIsBlocked] = useState<boolean>(false);
 
   function addProduct() {
     quantity < 5 && setQuantity(quantity + step);

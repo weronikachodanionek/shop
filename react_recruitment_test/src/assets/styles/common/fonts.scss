@@ -18,3 +18,27 @@
   font-weight: 400; //regular
   font-style: normal;
 }
+
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/noto-sans-thin.ttf") format("truetype");
+  font-weight: 300; //thin
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/noto-sans-regular.ttf") format("truetype");
+  font-weight: 400; //regular
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/noto-sans-medium.ttf") format("truetype");
+  font-weight: 500; //medium
+  font-style: normal;
+}

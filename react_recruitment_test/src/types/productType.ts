@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   image: string;
   price: string;
+  description: string;
   max: number;
   min: number;
   isBlocked: boolean;

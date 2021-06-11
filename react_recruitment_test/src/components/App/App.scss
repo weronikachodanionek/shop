@@ -4,7 +4,7 @@
   font-family: "Roboto Mono";
   font-size: 14px;
 
-  h3{
+  h3 {
     text-align: center;
     margin-top: 30px;
   }
@@ -38,6 +38,10 @@
   }
 }
 
+.productName {
+  font-weight: 500;
+}
+
 .productPrice {
   font-weight: 500;
   color: $primary;
@@ -46,11 +50,23 @@
 
 $imageHeight: 250px;
 
-.productImage {
-  background-position: center;
-  background-size: cover;
+.productImageOverlay {
+  overflow: hidden;
+  position: relative;
   width: 100%;
   height: $imageHeight;
+  background-color: $dark;
+}
+
+.productImage {
+  @include backgroundImage;
+  transition: ease 0.5s all;
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.5;
+    cursor: pointer;
+  }
 }
 
 .productNoPhoto {
