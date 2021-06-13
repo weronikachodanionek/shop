@@ -19,15 +19,12 @@ interface BasketActionsContextProps {
 const BasketContext = createContext<BasketContextProps>(
   {} as BasketContextProps
 );
-const BasketActionsContext =
-  createContext<BasketActionsContextProps>(
-    {} as BasketActionsContextProps
-  );
+const BasketActionsContext = createContext<BasketActionsContextProps>(
+  {} as BasketActionsContextProps
+);
 
-export const useBasketContext = () =>
-  useContext(BasketContext);
-export const useBasketActionsContext = () =>
-  useContext(BasketActionsContext);
+export const useBasketContext = () => useContext(BasketContext);
+export const useBasketActionsContext = () => useContext(BasketActionsContext);
 
 export const BasketContextProvider: FC = ({ children }) => {
   const [basket, setBasket] = useState<BasketItem[]>([]);

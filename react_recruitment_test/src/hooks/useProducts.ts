@@ -1,18 +1,21 @@
+import { AxiosError, AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { apiService } from "../services/api.service";
+import { productService } from "../services/products.service";
 import { Product } from "../types/productType";
 
 interface ProductsProps {
   products: Product[];
 }
 
-export default function useProductsData(): ProductsProps {
+export function useProductsData(): ProductsProps {
   const [products, setProducts] = useState<Product[]>();
 
-  const getData = async () => {
-    const res = await apiService.get("/api/cart", {});
-    const products = res.data;
-    setProducts(products);
+  const getData = () => {
+    productService
+      .getProducts()
+      .then((response: AxiosResponse<Product[]>) => setProducts(response.data))
+      .catch((error: AxiosError) => console.error(error.message));
   };
 
   useEffect(() => {

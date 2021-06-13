@@ -1,33 +1,38 @@
-import React from "react";
+import React, { FC } from "react";
 
-import useProductQuantity from "../../hooks/useProductQuantity";
+import { useProductQuantity } from "../../hooks";
 
 import "./Product.scss";
 import StyledButton from "../Buttons/ProductButton";
+import { useBasketContext } from "../../context";
+import { useState } from "react";
+import { useEffect } from "react";
+import { BasketItem } from "../../types";
 
 interface QuantityProps {
   pid: string;
   price: number;
+  min: number;
+  max: number;
 }
 
-const ProductQuantity: React.FC<QuantityProps> = ({ pid, price }) => {
+const ProductQuantity: FC<QuantityProps> = ({ pid, price, min, max }) => {
+
   const {
     quantity,
     isBlockedAddition,
     isBlockedSubtraction,
     addProduct,
     substractProduct,
-  } = useProductQuantity(0, 1, pid, price);
+  } = useProductQuantity(pid, price, min, max);
+
 
   return (
     <div className="productQuantity">
-      <StyledButton disabled={isBlockedAddition} onClick={() => addProduct()}>
+      <StyledButton disabled={isBlockedAddition} onClick={addProduct}>
         +
       </StyledButton>
-      <StyledButton
-        disabled={isBlockedSubtraction}
-        onClick={() => substractProduct()}
-      >
+      <StyledButton disabled={isBlockedSubtraction} onClick={substractProduct}>
         -
       </StyledButton>
 

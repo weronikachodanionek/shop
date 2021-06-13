@@ -9,7 +9,6 @@ const UnavailableProduct: React.FC = () => {
     <div className="productQuantity">
       <UnavailableProductButton disabled>+</UnavailableProductButton>
       <UnavailableProductButton disabled>-</UnavailableProductButton>
-
       <p className="quantityMessage">Produkt chwilowo niedostępny</p>
     </div>
   );

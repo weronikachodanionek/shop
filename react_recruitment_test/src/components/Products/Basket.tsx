@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { useBasketContext } from "../../context/basketContext";
 
 import { BasketItem } from "../../types/basketType";
 import "./Basket.scss";
 
-const Basket: React.FC = () => {
+const Basket: FC = () => {
   const { basket } = useBasketContext();
 
   return (

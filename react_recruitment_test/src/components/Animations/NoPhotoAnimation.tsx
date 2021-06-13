@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import React, { FC, useRef } from "react";
 import { Lottie, ReactLottieConfig } from "@crello/react-lottie";
 import { AnimationItem } from "lottie-web";
 import { noPhoto } from "../../assets/images";
 
-export const NoPhoto: React.FC<{ height?: string }> = () => {
+export const NoPhoto: FC<{ height?: string }> = () => {
   const animRef = useRef<AnimationItem>({} as AnimationItem);
   const defaultOptions: ReactLottieConfig = {
     animationData: noPhoto,
@@ -12,6 +12,6 @@ export const NoPhoto: React.FC<{ height?: string }> = () => {
   };
 
   return (
-      <Lottie animationRef={animRef} config={defaultOptions} width={"200px"} />
+    <Lottie animationRef={animRef} config={defaultOptions} width={"200px"} />
   );
 };

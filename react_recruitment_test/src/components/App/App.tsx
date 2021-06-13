@@ -1,27 +1,28 @@
-import React from "react";
+import React, { FC } from "react";
+
+import { ModalProvider } from "react-modal-hook";
 
 import { CircularProgress, Container, Grid, Paper } from "@material-ui/core";
 import { Basket, ProductQuantity, UnavailableProduct } from "../Products";
 import { DetailsModal } from "../Modals";
 
-import useProductsData from "../../hooks/useProducts";
-import { BasketContextProvider } from "../../context/basketContext";
+import { useProductsData } from "../../hooks";
+import { BasketContextProvider } from "../../context";
 
 import "./App.scss";
 import "../../assets/styles/index.scss";
-import { Product } from "../../types/productType";
-import { formatPrice } from "../../helpers/formatPrice";
+import { Product } from "../../types";
+import { formatPrice } from "../../helpers";
 import { NoPhoto } from "../Animations";
-import { ModalProvider } from "react-modal-hook";
 
-const App = () => {
+const App: FC = () => {
   const { products } = useProductsData();
 
   return (
-    <ModalProvider>
-      <>
-        {products ? (
-          <BasketContextProvider>
+    <BasketContextProvider>
+      <ModalProvider>
+        <>
+          {products ? (
             <Container className="app">
               <h3>Lista produktów</h3>
               <Grid container>
@@ -61,26 +62,25 @@ const App = () => {
                         <ProductQuantity
                           pid={product.pid}
                           price={formatPrice(product.price)}
+                          min={product.min}
+                          max={product.max}
                         />
                       )}
-                      <DetailsModal
-                        productDetails={product}
-                      />
+                      <DetailsModal productDetails={product} />
                     </Paper>
                   </Grid>
                 ))}
               </Grid>
-
               <Basket />
             </Container>
-          </BasketContextProvider>
-        ) : (
-          <div className="loader">
-            <CircularProgress />
-          </div>
-        )}
-      </>
-    </ModalProvider>
+          ) : (
+            <div className="loader">
+              <CircularProgress />
+            </div>
+          )}
+        </>
+      </ModalProvider>
+    </BasketContextProvider>
   );
 };
 

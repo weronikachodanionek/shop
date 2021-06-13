@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import ReactModal from "react-modal";
 import { useModal } from "react-modal-hook";
@@ -7,26 +7,33 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import SearchIcon from "@material-ui/icons/Search";
 
 import "./DetailsModal.scss";
-import { Product } from "../../types/productType";
+import { Product } from "../../types";
 import { Button } from "@material-ui/core";
-import useProductQuantity from "../../hooks/useProductQuantity";
+import { useProductQuantity } from "../../hooks";
 import { DetailsButton } from "../Buttons";
+import { formatPrice } from "../../helpers";
 
 interface DetailModalsProps {
   handleDetailsModal?: () => void;
   productDetails: Product;
-  // pid: string;
-  // price: number;
 }
 
-const DetailsModal: React.FC<DetailModalsProps> = ({
+const DetailsModal: FC<DetailModalsProps> = ({
   handleDetailsModal,
   productDetails,
-  // price,
-  // pid,
 }) => {
   const [showModal, hideModal] = useModal(() => {
-    // const { addProduct } = useProductQuantity(0, 1, pid, price);
+    const { addProduct } = useProductQuantity(
+      productDetails.pid,
+      formatPrice(productDetails.price),
+      productDetails.min,
+      productDetails.max
+    );
+
+    const handleAddProduct = () => {
+      addProduct();
+      hideModal();
+    };
 
     return (
       <ReactModal isOpen>
@@ -36,7 +43,7 @@ const DetailsModal: React.FC<DetailModalsProps> = ({
           </div>
 
           <div className="details">
-            <h3>Nazywa produktu: {productDetails.name}</h3>
+            <h3>Nazwa produktu: {productDetails.name}</h3>
             <span>Cena produktu: {productDetails.price} zł</span>
             {productDetails.isBlocked ? (
               <p className="unavailableCommunicat">
@@ -57,7 +64,9 @@ const DetailsModal: React.FC<DetailModalsProps> = ({
           {productDetails.isBlocked ? (
             <></>
           ) : (
-            <DetailsButton>Dodaj 1 sztukę do koszyka</DetailsButton>
+            <DetailsButton onClick={handleAddProduct}>
+              Dodaj 1 sztukę do koszyka
+            </DetailsButton>
           )}
         </div>
       </ReactModal>
